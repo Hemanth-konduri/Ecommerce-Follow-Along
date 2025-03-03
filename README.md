@@ -43,3 +43,11 @@
 - Hosting: Vercel / Netlify for frontend, Render / AWS / DigitalOcean for backend
 - Database Hosting: MongoDB Atlas (for MongoDB) / AWS RDS (for SQL-based)
 - CI/CD: GitHub Actions for automated deployment
+
+# Milestone 1
+  Completed foundation for my E-commerce Application.
+
+  # Milestone 2
+  - Seperate folders for frontend and backend.
+  - A functional Login page in the frontend.
+  - Completed setting for tailwind-css.
