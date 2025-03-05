@@ -51,3 +51,12 @@
   - Seperate folders for frontend and backend.
   - A functional Login page in the frontend.
   - Completed setting for tailwind-css.
+
+  # Milestone 3
+  - Organized the **backend folder structure** for scalability.
+  - 
+
+  # Milestone 4
+  - created the **user model** in mongoose to define user data structure.
+  - Developed the **User controller** to manage user authentication(signup, login).
+  - Implemented **Multer for filr handling**, allowing user profile and product image.
