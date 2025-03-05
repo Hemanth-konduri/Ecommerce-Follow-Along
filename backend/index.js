@@ -1,6 +1,7 @@
  const express = require('express');
  const app = express();
  const connect = require("./mongoDB")
+ const userRouter = require("./controller/userRouter");
 
 
  app.get("/", (request, response)=>{
@@ -12,11 +13,13 @@
    
 })
 
+app.use("/user", userRouter)
+
 
  app.listen(8080,async()=>{
     try {
         await connect()
-        
+
         console.log("Connected to server sucessfully");
     } catch (error) {
         console.log("Server not connected",error);
