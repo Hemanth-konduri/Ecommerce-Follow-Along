@@ -26,6 +26,10 @@ const signup = () => {
         return;
     }
 
+
+
+    
+
     if(userdetail.password == ""){
         alert("Please enter password");
         return;
