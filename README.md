@@ -70,3 +70,9 @@
 
   - created the **signup page** in react and added code for signup backend also.
   - Added the **signup page** validation in (signup, login). 
+
+
+  # Milestone 6
+
+  - added the  **password encryption** in the backend signup page.
+  - Added comparison for checking password is correct or not in login backend. 

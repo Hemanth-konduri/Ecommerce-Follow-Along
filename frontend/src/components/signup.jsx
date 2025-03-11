@@ -4,14 +4,14 @@ import "./signup.css";
 const signup = () => {
 
    const[userdetail, setUserDetail] = useState({
-       name:'',
-       email:'',
-       password:''
+       name:"",
+       email:"",
+       password:""
    })
 
    function handleInput(event){
        console.log(event.target.value)
-       setUserDetail({...userdetail,[event.target.value]:event.target.value})
+       setUserDetail({...userdetail,[event.target.name]:event.target.value})
    }
 
    async function handleSubmit() {
@@ -28,7 +28,7 @@ const signup = () => {
 
 
 
-    
+
 
     if(userdetail.password == ""){
         alert("Please enter password");
