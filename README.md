@@ -76,3 +76,8 @@
 
   - added the  **password encryption** in the backend signup page.
   - Added comparison for checking password is correct or not in login backend. 
+
+  # Milestone 7
+
+  - created all the requirements **login authentication** in the backend file.
+  - compared encrypted password in the login authentication.
