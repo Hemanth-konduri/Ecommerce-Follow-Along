@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Login from './components/Login'
 import signup from './components/signup'
+import products from './components/products'
+
 
 
 function App() {
@@ -11,6 +13,8 @@ function App() {
 
   return (
     <>
+      <products/>
+
       <Login/>
       <signup/>
     </>
