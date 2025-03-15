@@ -80,4 +80,9 @@
   # Milestone 7
 
   - created all the requirements **login authentication** in the backend file.
-  - compared encrypted password in the login authentication.
+  - Here we are first getting the hashed password from db searched by email and then comparing the input body password with hashed password by compare method in bcrypts.
+
+  # Milestone 8
+  
+   - added the **product page** in the frotend as a home page.
+   - and added the designs for products page and home page with css for both.
