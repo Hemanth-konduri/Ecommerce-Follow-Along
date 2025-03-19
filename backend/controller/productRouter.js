@@ -1,0 +1,32 @@
+const express = require("express");
+
+const productRouter = express.Router();
+
+
+const productModel = require("../models/ProductModel");
+
+const productImage = require("../middlewares/multer");
+
+productRouter.post("/addProduct",async(req, res, next)=>{
+    productImage.array("images", 6)(req, res, (err)=>{
+        if(err){
+            return res.status(500).send({msg:"Something went wrong while uploading images"});
+        }
+    })
+
+}, async(req, res)=>{
+    try{
+        const {title, description, price} = req.body;
+        if(!title || !description || !price){
+            return res.status(404).send({MSG:"Please add all fields"});
+        }
+
+        const images = req.files;
+        
+
+
+    }catch(error){
+        return res.status(500).send({msg:"Something went wrong", error})
+    }
+
+} )

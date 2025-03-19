@@ -88,9 +88,17 @@
    - and added the designs for products page and home page with css for both.
 
 
-   
+
 
    # Milestone 9
 
    - created the **AddProducts** page in frontend.
    - added form validation in AddProducts page.
+
+   # Milestone 10
+
+   - Created the **productRouter** page  in backend.
+   - created the **productModel** in backend.
+   - handled file uploads by multer inside middleware multer.
+
+
