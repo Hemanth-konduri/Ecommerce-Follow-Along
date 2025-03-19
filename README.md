@@ -86,3 +86,11 @@
   
    - added the **product page** in the frotend as a home page.
    - and added the designs for products page and home page with css for both.
+
+
+   
+
+   # Milestone 9
+
+   - created the **AddProducts** page in frontend.
+   - added form validation in AddProducts page.
