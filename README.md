@@ -101,4 +101,10 @@
    - created the **productModel** in backend.
    - handled file uploads by multer inside middleware multer.
 
+   # Milestone 11
+
+   - created **Home page** for dynamic products presenatation.
+   - added the **backend** part for handeling products(created endpoint to get products).
+   - handeled file uploads by multer inside middleware multer
+
 

@@ -22,6 +22,12 @@ productRouter.post("/addProduct",async(req, res, next)=>{
         }
 
         const images = req.files;
+        const imageLinkArray = [];
+        images.forEach((ele)=>{
+            console.log(ele);
+        });
+
+        return res.status(200).send({msg:"Product added successfully"});
         
 
 
@@ -30,3 +36,5 @@ productRouter.post("/addProduct",async(req, res, next)=>{
     }
 
 } )
+
+module.exports = productRouter;
