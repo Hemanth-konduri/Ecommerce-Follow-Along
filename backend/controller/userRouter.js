@@ -1,56 +1,89 @@
 const express = require("express");
+const userModel = require("../models/userModel");
 const bcrypt = require("bcryptjs");
+const { userImage } = require("../middleware/multer");
+const jwt = require('jsonwebtoken');
+
 const userRouter = express.Router();
-const uploadUserImage = require("../middlewares/multer");
-const { userModel } = require("../models/userModel"); // Corrected import
 
-userRouter.post("/signup", uploadUserImage.single("image"), async (request, response) => {
-  try {
-    const { name, email, password } = request.body;
-    if (!name || !email || !password) { // Corrected validation logic
-      return response.status(400).send({ msg: "All fields are required" });
+
+userRouter.post("/signup", async (req, res) => {
+    try {
+
+        userImage.single("image")(req, res, async (err) => {
+            if (err) {
+                console.log(err)
+                return res.status(400).json({ message: "File upload error", error: err.message });
+            }
+
+            const { name, email, password } = req.body;
+
+            if (!name || !email || !password) {
+                return res.status(400).json({ message: "All details are required" });
+            }
+
+            const userExists = await userModel.findOne({ email });
+            if (userExists) {
+                return res.status(400).json({ message: "User Already Registered" });
+            }
+
+            // Hash password securely
+            const saltRounds = 10;
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+            // Handle image upload (if provided)
+            const imageUrl = req.file 
+                ? `http://localhost:8080/uploads/userImages/${req.file.filename}`
+                : null;
+
+            // Create user
+            const newUser = await userModel.create({ 
+                name, 
+                email, 
+                password: hashedPassword, 
+                image: imageUrl 
+            });
+
+            const token = jwt.sign({name:newUser.name, email:newUser.email, id:newUser.id}, process.env.JWT_PASSWORD);
+
+            return res.status(201).json({ message: "User registered successfully", token:token });
+        });
+    } catch (error) {
+        console.error("Signup Error:", error);
+        return res.status(500).json({ error: "Internal Server Error" });
     }
-    const user = await userModel.findOne({ email: email }); // Corrected method name
-    console.log(user);
-    if (user) {
-      return response.status(200).send({ msg: "User already exists" });
-    }
-
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(password, salt);
-
-    const newUser = new userModel({ name, email, password: hash }); // Corrected to create a new model instance
-    await newUser.save(); // save the new user to the database
-
-    return response.status(200).send({ message: "User registered successfully" });
-  } catch (error) {
-    console.error("Signup error:", error); // Log the error for debugging
-    return response.status(500).send({ msg: "Something went wrong!" });
-  }
 });
 
-userRouter.post("/login", async (request, response) => { //corrected userRouter.post
-  try {
-    const { email, password } = request.body;
-    if (!email || !password) { // Corrected validation logic
-      return response.status(400).send({ msg: "All fields are required" });
-    }
+// Login Route
+userRouter.post("/login", async (req, res) => {
+    try {
+        const { email, password } = req.body;
 
-    const user = await userModel.findOne({ email }); // Corrected method name
-    if (!user) {
-      return response.status(401).send({ msg: "Entered details are wrong" }); // User not found
-    }
+        if (!email || !password) {
+            return res.status(400).json({ message: "All details are required" });
+        }
 
-    const matchedPass = bcrypt.compareSync(password, user.password); // Compare with stored hashed password
+        const user = await userModel.findOne({ email });
 
-    if (matchedPass) {
-      return response.status(200).send({ msg: "User logged in successfully" });
+        if (!user) {
+            return res.status(401).json({ message: "Invalid email or password" });
+        }
+
+        // Corrected password comparison
+        const matchedPass = bcrypt.compareSync(password, user.password);
+
+        if (matchedPass) {
+          const token = jwt.sign({name:user.name, email:user.email, id:user.id}, process.env.JWT_PASSWORD);
+            return res.status(200).json({ message: "User logged in successfully", token });
+        } else {
+            return res.status(401).json({ message: "Invalid email or password" });
+        }
+        
+
+    } catch (error) {
+        console.error("Login Error:", error);
+        return res.status(500).json({ error: "Internal Server Error" });
     }
-    return response.status(401).send({ msg: "Entered details are wrong" }); // Password mismatch
-  } catch (error) {
-    console.error("Login error:", error); // Log the error for debugging
-    return response.status(500).send({ msg: "Something went wrong!" });
-  }
 });
 
 module.exports = userRouter;

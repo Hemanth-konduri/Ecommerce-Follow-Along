@@ -107,4 +107,7 @@
    - added the **backend** part for handeling products(created endpoint to get products).
    - handeled file uploads by multer inside middleware multer
 
-
+   # Milestone 12
+   
+   - Created **product page** for dynamic products presentation according to user mail.
+   - Created backend form specific user products.
