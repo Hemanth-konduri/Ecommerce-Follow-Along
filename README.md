@@ -120,3 +120,8 @@
    
    - Created **product page** for dynamic products presentation according to user mail.
    - Created backend form specific user products.
+
+   # Milestone 13
+
+   - created **product update endpoint** for updating products.
+   - created from for updating data in frontend and created autofill function.

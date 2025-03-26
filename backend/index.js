@@ -4,6 +4,9 @@
  const dotenv = require("dotenv");
  dotenv.config();
 
+ const jwt = require("jsonwebtoken");
+ const userModel = require("./")
+
  const cors = require("cors");
 
  app.use(cors());
@@ -30,6 +33,20 @@ const productRouter = require('./controller/productRouter');
 })
 
 app.use("/user", userRouter);
+
+app.use("/product", async(req, res)=>{
+    try{
+        const auth = req.headers.authorization;
+        if(!auth){
+            return res.status(401).send({message:"Pleaselogin"});
+        }
+        const decoded = jwt.verify(auth, process.env.JWT_PASSWORD);
+        console.log(decoded);
+    }catch(error){
+
+    }
+    
+})
 app.use("/product", productRouter);
 
 

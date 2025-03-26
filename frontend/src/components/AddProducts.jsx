@@ -17,9 +17,20 @@ async function handleSubmit(e) {
             alert("Please fill all the fields");
             return;
         }
+        const token = JSON.parse(localStorage.getItem("Follow-along-auth-token-user-name-id"))
 
         const formData = new FormData();
-        await axios.post("http://localhost:8080/product/addproduct");
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("password", password);
+        for(let i=0; i<productImages.length; i++){
+            formData.append("image", productImages[i]);
+        }
+        await axios.post("http://localhost:8080/product/addproduct", formData,{
+            headers:{
+                "authorization": token.token
+            }
+        });
 
     }catch(error){
         console.log(error);
@@ -31,7 +42,7 @@ async function handleSubmit(e) {
 
   return (
     <div>
-        <form action="">
+        <form action="" className={Styles.formbox} onChange={handleSubmit}>
             <input type="text" name={"title"} placeholder='Enter title...' onChange={(event)=>{
                 setProductDetails({...productDetails,[event.target.name]:event.target.value})
             }}/>
@@ -56,7 +67,7 @@ async function handleSubmit(e) {
             {
                 noOfImages.map((ele)=>{
                     <input type="file" accept='image/' onChange={(event)=>[
-                        setProductImages([...productDetails, event.target.files[0]]);
+                        setProductImages([...productDetails, event.target.files[0]]),
                     ]}/>
 
                 })

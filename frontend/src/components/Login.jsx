@@ -30,7 +30,7 @@
 
         try{
             const checkUser = await axios.post("http://localhost:8080/user/login", loginData);
-            localStorage.setItem("Follow-along-auth-token", JSON.stringify(checkUser.data.token));
+            localStorage.setItem("Follow-along-auth-token-user-name-id", JSON.stringify(checkUser.data.token, name:checkUser.data.name, id:checkUser.data.id));
             alert("You successfullt logged in");
             
 
