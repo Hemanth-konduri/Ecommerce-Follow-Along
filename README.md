@@ -125,3 +125,8 @@
 
    - created **product update endpoint** for updating products.
    - created from for updating data in frontend and created autofill function.
+
+    # Milestone 14: Created Product Delete**
+
+   - created*product delete Endpoint* for Updating products.
+   - created from for Deleting product in frontend.

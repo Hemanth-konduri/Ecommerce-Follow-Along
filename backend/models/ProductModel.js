@@ -22,6 +22,13 @@ const schema = mongoose.Schema({
     createdAt:{
         type: Date,
         default: Date.now
+    },
+    userId:{
+        type:mongoose.Schema.Types.ObjectId, ref:"user", 
+        required:true
+    },
+    {
+    timestamps:true
     }
 })
 

@@ -73,6 +73,7 @@ async function handleSubmit(e) {
                 })
 
             }
+            <input type="Submit" value={"Upload product"} />
         </form>
     </div>
   )

@@ -42,6 +42,7 @@ app.use("/product", async(req, res)=>{
         }
         const decoded = jwt.verify(auth, process.env.JWT_PASSWORD);
         console.log(decoded);
+        next();
     }catch(error){
 
     }
