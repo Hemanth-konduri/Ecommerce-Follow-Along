@@ -88,21 +88,11 @@
    - and added the designs for products page and home page with css for both.
 
 
-
-
    # Milestone 9
 
    - created the **AddProducts** page in frontend.
    - added form validation in AddProducts page.
 
-
-
-
-
-
-
-
-   
 
    # Milestone 10
 
@@ -130,3 +120,7 @@
 
    - created*product delete Endpoint* for Updating products.
    - created from for Deleting product in frontend.
+
+   # Milestone 15
+
+   - Created **Navigation bar** for navigating between pages.

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import styles from "./signup.css";
+import styles from "./signup.module.css";
 
 const Signup = () => {
     const [SignupData, setSignupData] = useState({
@@ -62,6 +62,7 @@ const Signup = () => {
                     image?<img src={URL.createObjectURL(image)}/>:""
                 }
                 <label>Upload Your Image</label>
+                
                 <input
                     type="file"
                     onChange={(event) => {

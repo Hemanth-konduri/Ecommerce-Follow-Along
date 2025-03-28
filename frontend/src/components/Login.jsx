@@ -1,62 +1,53 @@
- import React, { useState } from 'react'
- import style from './login.module.css'
- import axios from "axios";
- 
- 
- const Login = () => {
-
-    const[loginData, setLoginData] = useState({
-        email: "",
-        password: ""
-    }) 
+import React, { useState } from 'react'
+import styles from "./login.module.css";
+import axios from 'axios';
+const Login = () => {
+    const[loginData,setLoginData] = useState({
+        email:"",
+        password:""
+    })
 
     function handleInput(e){
-        setLoginData({
-            ...loginData,[e.target.name]: e.target.value
-        })
+        setLoginData({...loginData,[e.target.name]:e.target.value})
     }
 
 
-
-    async function handleLogin(event){
+   async function handleLogin(event){
         event.preventDefault();
-        if(loginData.email === "" ){
-            alert("please enter email...");
-        }
-        if(loginData.password === ""){
-            alert("please enter password...");
+        if(loginData.email == ""){
+            alert("Please enter email...");
             return;
         }
 
-        try{
-            const checkUser = await axios.post("http://localhost:8080/user/login", loginData);
-            localStorage.setItem("Follow-along-auth-token-user-name-id", JSON.stringify(checkUser.data.token, name:checkUser.data.name, id:checkUser.data.id));
-            alert("You successfullt logged in");
-            
-
-        }catch(error){
-            console.log(error);
-            alert("Something went wrong while logging in");
-
+        if(loginData.password == ""){
+            alert("Please enter password...");
+            return;
         }
-
+        try {
+            const checkUser = await axios.post("http://localhost:8080/user/login",loginData);
+           console.log(checkUser)
+           localStorage.setItem("follow-along-auth-token-user-name-id",JSON.stringify({token:checkUser.data.token,name:checkUser.data.name,id:checkUser.data.id}))
+            alert("You sucessfully loged in");
+        } catch (error) {
+            console.log(error);
+            alert("Someting went wrong while logging in");
+        }
 
 
         
     }
-   return (
-     <div>
-        <form onSubmit={handleLogin} >
-            <label htmlFor="">Email: </label>
-            <input type="email" name='email'  value={loginData.email}  onChange={handleInput} placeholder='Enter email' />
-           
-            <label htmlFor="">Password: </label>
-            <input type="password" name='password' value={loginData.password} onChange={handleInput} placeholder='Enter password'/>
-            
-            <input type="Submit" />
+
+  return (
+    <div>
+        <form onSubmit={handleLogin} className={styles.formbox} >
+            <label htmlFor="">Email</label>
+            <input type="email" value={loginData.email} name='email' onChange={handleInput} placeholder='Email...' />
+            <label>password</label>
+            <input type="password" value={loginData.password} name="password" onChange={handleInput} placeholder='password...' />
+            <input type="submit" />
         </form>
-     </div>
-   )
- }
- 
- export default L
+    </div>
+  )
+}
+
+export default Login
