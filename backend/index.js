@@ -7,6 +7,7 @@ app.use(express.json());
 const mongoose = require("mongoose");
 
 const dotenv = require("dotenv");
+const path = require("path");
 
 dotenv.config();
 
@@ -65,6 +66,8 @@ app.use("/product",async (req, res, next) => {
 },productRouter);
 
 app.use("/allproducts", allProductRouter);
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.listen(PORT,async ()=>{
     try {

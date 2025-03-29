@@ -124,3 +124,8 @@
    # Milestone 15
 
    - Created **Navigation bar** for navigating between pages.
+
+   # Milestone 16  Created product Details page
+
+   - created **Product Details** for showing full product details in details page.
+   - Added add-to-cart button with quantity selection.
