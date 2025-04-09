@@ -31,6 +31,8 @@ const productRouter = require("./controller/productRouter");
 
 const allProductRouter = require("./controller/allProducts");
 
+const cardRouter = require("./controller/cardProducts")
+
 
 app.get("/",(req,res)=>{
     try {
@@ -56,14 +58,17 @@ app.use("/product",async (req, res, next) => {
         if (!user && user.id) {
             return res.status(404).json({ message: "Please signup" });
         }
-        console.log(user.id)
+        console.log(user.id);
         req.userId = user.id; 
+        
         next();
     } catch (error) {
         console.log(error)
         return res.status(400).json({ message: "Invalid Token", error });
     }
 },productRouter);
+
+app.use("/cart", cardRouter)
 
 app.use("/allproducts", allProductRouter);
 

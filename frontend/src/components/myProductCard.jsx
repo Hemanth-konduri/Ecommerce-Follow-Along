@@ -6,9 +6,19 @@ const myProductCard = ({product}) => {
         <img className={styles.productImg} src={product.image} alt={product.title} />
         <h3>{product.title}</h3>
         <p>${product.price}</p>
-        <div>
-            <buttons className="btn-del-edit">Edit</buttons>
-            <buttons className="btn-del-edit">Delete</buttons>
+        <div style={{
+          display:"flex",
+          justifyContent:"space-around",
+          padding:"0.5rem"
+        }}>
+            <buttons className="btn-del-edit" style={{
+              backgroundColor:"grey", border:"1px solid",
+              borderRadius:"0.3rem", width:"3rem"
+            }}>Edit</buttons>
+            <buttons className="btn-del-edit" style={{
+              backgroundColor:"grey", border:"1px solid",
+              borderRadius:"0.3rem", width:"3rem"
+            }}>Delete</buttons>
         </div>
     </div>
   )
