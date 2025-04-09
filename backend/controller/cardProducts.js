@@ -20,7 +20,7 @@
         const{title, description, price, images} = product;
 
         const newCartProduct = await cardModel.insertOne({
-            title,description,price,images,userId:req.userId;
+            title,description,price,images,userId:req.userId,
 
         })
         return res.status(201).send({message:"Product is added successfully"});
@@ -37,6 +37,14 @@
             return res.status(400).send({message:"Please add cart product id"})
         }
         const {noOfCartItems} = req.query;
+        if(noOfCartItems == 0){
+            const cartItemToBeDeleted = await cardModel.findByIdAndDelete({_id:cartProductid});
+            if(!cartItemToBeDeleted){
+                return res.status(404).send({message:"Product not found"})
+            }
+                return res.status(200).send({message:"Cart item deleted successfully"})
+            
+        }
         if(noOfCartItems<1){
             return res.status(400).send({message:"Cart item count should not be less than 1"})
         }
@@ -55,7 +63,7 @@
  cardRouter.get("/",async(req,res)=>{
     try{
         const userId = req.userId;
-        const 
+        
 
     }catch(error){
         return res.status(500).send({message:"Somethign went wrong"})

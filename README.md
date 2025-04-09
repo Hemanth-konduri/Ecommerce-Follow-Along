@@ -136,3 +136,8 @@
 
    - created endpoints in backend **CRUD** for handling cart.
    - Handled quantity for product in cart.
+
+   # Milestone 18 Frontend cart page
+
+   - created cart page in frontend.
+   - Handled cart operations from frontend.

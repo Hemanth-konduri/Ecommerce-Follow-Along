@@ -26,6 +26,9 @@ const Navbar = () => {
                 My Products
             </div>
         </div>
+        <div onClick={()=>navigate("/cart")}>
+          Cart
+        </div>
         <div>
         <div
         onClick={()=>{
