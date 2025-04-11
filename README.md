@@ -141,3 +141,7 @@
 
    - created cart page in frontend.
    - Handled cart operations from frontend.
+
+   # Milestone 19 Backend endpoint for cart item quantity
+
+   - created put request for updating quantity for cart item.
