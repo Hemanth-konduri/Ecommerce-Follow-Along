@@ -157,3 +157,8 @@
    - Created route for Add address page in frontend.
    - Create form for adding address.
    - Started address using useState Hook.
+
+   # Milestone 22 Created backend for address and attached with frontend
+
+   - Created backend endpoint for handling address.
+   - Added backend endpoint with frontend.
