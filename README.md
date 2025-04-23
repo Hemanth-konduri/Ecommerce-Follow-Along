@@ -162,3 +162,9 @@
 
    - Created backend endpoint for handling address.
    - Added backend endpoint with frontend.
+
+   # Milestone 23 worked on address on frontend and backend
+
+   - Created place order button in cart page and added navigation to select address.
+   - Created select address page and provided option to select one address.
+   - Created backend end point to send all address to user.
