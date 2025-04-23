@@ -168,3 +168,10 @@
    - Created place order button in cart page and added navigation to select address.
    - Created select address page and provided option to select one address.
    - Created backend end point to send all address to user.
+
+   # Milestone 24 Worked on address in frontend and backend
+
+   - Displayed all of products in cart.
+   - Displayed all address in address selection page.
+   - Displayed total price in the cart.
+   - Added place order button at the bottom.
