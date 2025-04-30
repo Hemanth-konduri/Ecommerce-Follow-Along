@@ -182,3 +182,13 @@
    - Created endpoint for order.
    - Implemented mail service from nodemailer.
    - Handled address for the delivery.
+
+
+   # Milestone 26 Worked on order backend and email service
+
+   - Implemented mail with nodemailer.
+   - Sending order details to user via mail.
+   
+
+
+
