@@ -188,6 +188,11 @@
 
    - Implemented mail with nodemailer.
    - Sending order details to user via mail.
+
+   # Milestone 27 Worked on frontend for my order page
+
+   - Created a get request to get for my orders.
+   -  
    
 
 
